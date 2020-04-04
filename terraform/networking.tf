@@ -43,6 +43,10 @@ resource "aws_security_group" "allow-http" {
   description = "Allow HTTP inbound traffic"
   vpc_id      = aws_vpc.microservice.id
 
+  lifecycle {
+    create_before_destroy = true
+  }
+
   ingress {
     from_port   = 80
     to_port     = 80
@@ -56,6 +60,10 @@ resource "aws_security_group" "allow-ssh" {
   description = "Allow SSH inbound traffic"
   vpc_id      = aws_vpc.microservice.id
 
+  lifecycle {
+    create_before_destroy = true
+  }
+
   ingress {
     from_port   = 22
     to_port     = 22
@@ -68,6 +76,10 @@ resource "aws_security_group" "allow-all-outbound" {
   name        = "allow-all-outbound"
   description = "Allow all outbound traffic"
   vpc_id      = aws_vpc.microservice.id
+
+  lifecycle {
+    create_before_destroy = true
+  }
 
   egress {
     from_port   = 0

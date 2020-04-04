@@ -41,3 +41,11 @@ Selecting `yes` will destroy the old instance and deploy the new one.
 ### `terraform destroy`
 
 Infrastructure managed by Terraform will be destroyed. 
+
+## API Gateway
+
+Navigate to the api-gateway directory
+
+###`npm deploy`
+
+This will bundle, cleanup and deploy the application

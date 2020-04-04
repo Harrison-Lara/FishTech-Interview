@@ -58,7 +58,7 @@ const codeDeployClient = new AWS.CodeDeploy({
     secretAccessKey: accessEnv("AWS_ACCESS_KEY_SECRET")
 });
 
-const s3Client = new AWS.CodeDeploy({
+const s3Client = new AWS.S3({
     accessKeyId: accessEnv("AWS_ACCESS_KEY_ID"),
     endpoint: new AWS.Endpoint(`https://s3.${awsRegion}.amazonaws.com/`),
     s3ForcePathStyle: true,
@@ -86,22 +86,19 @@ const rootDir = rel('../');
         process.exit();
     }
 
-    console.log('Copying appspec...');
-    fs.copyFileSync(rel('../appspec.yml'), rel('../appspec.yml'));
-
     console.log('Generating deployment file');
-    const filename = `${deploymentDirName}-deployment-${getFullDate}.zip`;
+    const filename = "harrison-microservice-deployment.zip";
     const zipPath = `/tmp/${filename}`;
     await exec(
-        `zip -r ${zipPath} . -x terraform/\\* -x node_modules/\\* -x \\*/node_modules/\\ -x \\*/.cache/\\* -x \\*.DS_Store`,
+        `zip a -r ${zipPath}`,
         { cwd: rootDir, maxBuffer: MAX_BUFFER_SIZE }
     );
 
     console.log('Uploading deployment file');
     await s3Client
         .putObject({
-            Body: fs.createReadStream(zipPath),
-            Bucket: outputs[`${APPLICATION_NAME}-deployment-bucket-name`].value,
+            Body: fs.createReadStream("/tmp/harrison-microservice-deployment.zip"),
+            Bucket: "harrison-microservices-api-gateways-deployment",
             Key: filename
         }).promise();
 
@@ -110,12 +107,12 @@ const rootDir = rel('../');
     console.log('Deploying application');
 
     await codeDeployClient.createDeployment({
-        applicationName: outputs[`${APPLICATION_NAME}-codedeploy-app-name`].value,
+        applicationName: "api-gateways",
         deploymentGroupName: accessEnv('CODEDEPLOY_DEPLOYMENT_GROUP_NAME'),
         revision: {
             revisionType: 'S3',
             s3Location: {
-                bucket: outputs[`${APPLICATION_NAME}-deployment-bucket-name`].value,
+                bucket: "harrison-microservices-api-gateways-deployment",
                 bundleType: 'zip',
                 key: filename
             }

@@ -8,7 +8,7 @@
     "start": "npm-run-all --parallel watch:server watch:build",
     "watch:build": "webpack --watch",
     "watch:server": "nodemon \"./dist/index.js\" --watch \"./dist\"",
-    "deploy": "node-deploy ${pwd}",
+    "deploy": "node-deploy $(pwd)",
     "linkall": "npm link node-deploy"
   },
   "devDependencies": {
