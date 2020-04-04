@@ -78,7 +78,7 @@ resource "aws_security_group" "allow-all-outbound" {
 }
 
 resource "aws_subnet" "microservice-subnet-public" {
-  availability_zone = "us-east-2a"
+  availability_zone = "us-east-2b"
   cidr_block        = "10.0.0.0/24"
   vpc_id            = aws_vpc.microservice.id
 
@@ -88,7 +88,7 @@ resource "aws_subnet" "microservice-subnet-public" {
 }
 
 resource "aws_subnet" "microservice-subnet-private-1" {
-  availability_zone = "us-east-2a"
+  availability_zone = "us-east-2b"
   cidr_block        = "10.0.1.0/24"
   vpc_id            = aws_vpc.microservice.id
 
@@ -98,7 +98,7 @@ resource "aws_subnet" "microservice-subnet-private-1" {
 }
 
 resource "aws_subnet" "microservice-subnet-private-2" {
-  availability_zone = "us-east-2a"
+  availability_zone = "us-east-2b"
   cidr_block        = "10.0.2.0/24"
   vpc_id            = aws_vpc.microservice.id
 

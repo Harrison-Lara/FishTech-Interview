@@ -6,13 +6,33 @@ const { format } = require('date-fns');
 const fs = require('fs');
 const path = require('path');
 const util = require('util');
+const dotenv = require('dotenv')
 
 const deploymentDir = process.argv[2];
 const deploymentDirName = path.basename(deploymentDir);
 
 const rel = relPath => path.resolve(deploymentDir, relPath);
 
-const tfFilePath = rel('../terraform/terraform.tfstate');
+dotenv.config({
+    path: `${__dirname}/.deploy.env`
+});
+
+const cache = {};
+
+const accessEnv = (key, defaultValue) => {
+    if (!(key in process.env)) {
+        if (defaultValue) return defaultValue;
+        throw new Error(`${key} not found in process.env!`);
+    }
+
+    if (cache[key]) return cache[key];
+
+    cache[key] = process.env[key];
+
+    return process.env[key];
+};
+
+const tfFilePath = rel('../../terraform/terraform.tfstate');
 
 if (!fs.existsSync(tfFilePath)) {
     throw new Error("terraform state file does not exist. Run `Terraform Apply`")
@@ -20,9 +40,6 @@ if (!fs.existsSync(tfFilePath)) {
 
 const { outputs } = JSON.parse(fs.readFileSync(tfFilePath, "utf-8"));
 
-require('dotenv').config({ path: rel('./.deploy.env') });
-
-const accessEnv = require('./helpers/accessEnv');
 
 const exec = util.promisify(child_process.exec);
 
@@ -64,13 +81,13 @@ const rootDir = rel('../');
     fs.writeFileSync(lockFilePath, 'This stop node-deploy from running concurrently with itself.');
 
     console.log('Checking environment');
-    if (!fs.existsSync(rel('.production.env'))) {
+    if (!fs.existsSync(rel('../.production.env'))) {
         console.log('No .production.env found! Stopping...')
         process.exit();
     }
 
     console.log('Copying appspec...');
-    fs.copyFileSync(rel('./appspec.yml'), rel('../appspec.yml'));
+    fs.copyFileSync(rel('../appspec.yml'), rel('../appspec.yml'));
 
     console.log('Generating deployment file');
     const filename = `${deploymentDirName}-deployment-${getFullDate}.zip`;

@@ -5,7 +5,7 @@ resource "aws_eip" "api-gateway-eip" {
 module "api-gateway" {
   source = "./node-server"
 
-  ami-id               = "ami-0119aa4d67e59007c"
+  ami-id               = "ami-0e01ce4ee18447327"
   iam-instance-profile = module.api-gateway-codedeploy.iam-instance-profile
   key-pair             = aws_key_pair.microservice.key_name
   name                 = "api-gateway"

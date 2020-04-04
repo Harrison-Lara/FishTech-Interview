@@ -7,7 +7,12 @@
     "build": "webpack --progress",
     "start": "npm-run-all --parallel watch:server watch:build",
     "watch:build": "webpack --watch",
-    "watch:server": "nodemon \"./dist/index.js\" --watch \"./dist\""
+    "watch:server": "nodemon \"./dist/index.js\" --watch \"./dist\"",
+    "deploy": "node-deploy ${pwd}",
+    "linkall": "npm link node-deploy"
+  },
+  "devDependencies": {
+    "node-deploy": "../node-deploy"
   },
   "author": "Harrison R. Lara",
   "license": "MIT",
@@ -19,6 +24,7 @@
     "apollo-server-express": "^2.11.0",
     "babel-loader": "^8.1.0",
     "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "got": "^10.7.0",
     "lodash": "^4.17.15",

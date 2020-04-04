@@ -18,9 +18,14 @@ terraform/.terraform/*
 # api-gateway
 api-gateway/node_modules
 api-gateway/dist
+api-gateway/.deploy.env
+api-gateway/.production.env
+api-gateway/deploy.lock
 
 # node deploy
 node-deploy/node_modules
+node-deploy/src/.deploy.env
+node-deploy/src/.production.env
 
 # misc
 .DS_Store

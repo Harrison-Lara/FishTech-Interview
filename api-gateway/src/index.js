@@ -1,3 +1,4 @@
 import "@babel/polyfill";
-import './helpers/accessEnv';
+import "dotenv/config";
+
 import "./server/server";
