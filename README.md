@@ -46,6 +46,6 @@ Infrastructure managed by Terraform will be destroyed.
 
 Navigate to the api-gateway directory
 
-###`npm deploy`
+### `npm deploy`
 
 This will bundle, cleanup and deploy the application
