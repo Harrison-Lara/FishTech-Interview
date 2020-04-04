@@ -19,6 +19,9 @@ terraform/.terraform/*
 api-gateway/node_modules
 api-gateway/dist
 
+# node deploy
+node-deploy/node_modules
+
 # misc
 .DS_Store
 .env.local

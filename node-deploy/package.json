@@ -1,0 +1,16 @@
+{
+  "name": "deploy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "Harrison R. Lara",
+  "license": "MIT",
+  "bin": {
+    "node-deploy": "src/index.js"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.653.0",
+    "date-fns": "^2.11.1",
+    "dotenv": "^8.2.0"
+  }
+}
