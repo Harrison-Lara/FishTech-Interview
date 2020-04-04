@@ -1,5 +1,7 @@
-# dependencies
+# client
 client/node_modules
+client/build
+client/dist
 
 # testing
 /coverage
