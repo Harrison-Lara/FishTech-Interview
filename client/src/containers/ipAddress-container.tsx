@@ -16,11 +16,9 @@ const useStyles = makeStyles(() =>
   })
 );
 
-const validate = (values: any) => {
+export const validate = (values: any) => {
   const errors = {} as any;
-  if (!values.address) {
-    errors.address = 'Required (Ex. 8.8.8.8)';
-  } else if (!/[0-9][0-9.]*[0-9].{4,}$/g.test(values.address)) {
+  if (!values.address || !/[0-9][0-9.]*[0-9].{4,}/g.test(values.address)) {
     errors.address = 'Invalid IP (Ex. 8.8.8.8)';
   }
   return errors;

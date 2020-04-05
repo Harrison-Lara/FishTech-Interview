@@ -16,7 +16,7 @@ interface ITextfieldProps {
     rowsMax?: string | number;
     onBlur?: any
     type?: string;
-    value?: any;
+    value?: string;
     onChange: any
     className?: any;
 }

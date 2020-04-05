@@ -27,11 +27,24 @@
     "build": "rm -rf build && react-scripts build",
     "deploy": "./deploy.sh",
     "predeploy": "SET NODE_ENV=production && npm run build",
-    "test": "react-scripts test --coverage --watchAll=false",
+    "test": "react-scripts test --coverage --watchAll=false --u",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "jest": {
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.{ts,tsx}",
+      "!<rootDir>/node_modules/",
+      "!<rootDir>/src/index.tsx",
+      "!<rootDir>/src/react-app-env.d.ts",
+      "!<rootDir>/src/components/index.tsx",
+      "!<rootDir>/src/containers/index.tsx"
+    ]
   },
   "browserslist": {
     "production": [

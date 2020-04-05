@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`IPAddress Render the IPAddress container 1`] = `
+<form
+  onSubmit={[Function]}
+>
+  <WithStyles(ForwardRef(Grid))
+    container={true}
+    spacing={8}
+  >
+    <WithStyles(ForwardRef(Grid))
+      item={true}
+      xs={4}
+    />
+    <WithStyles(ForwardRef(Grid))
+      item={true}
+      xs={4}
+    >
+      <WithStyles(ForwardRef(Typography))
+        align="center"
+        className="makeStyles-title-1"
+        variant="h3"
+      >
+        IP Information
+      </WithStyles(ForwardRef(Typography))>
+      <WithStyles(ForwardRef(FormGroup))>
+        <TextField
+          error={false}
+          helperText="Ex. 8.8.8.8"
+          id="address"
+          label="IP Address"
+          onBlur={[Function]}
+          onChange={[Function]}
+          value=""
+        />
+        <Button
+          className="makeStyles-buttonMargin-2"
+          color="primary"
+          onClick={[Function]}
+          variant="contained"
+        >
+          Search
+        </Button>
+      </WithStyles(ForwardRef(FormGroup))>
+    </WithStyles(ForwardRef(Grid))>
+  </WithStyles(ForwardRef(Grid))>
+</form>
+`;

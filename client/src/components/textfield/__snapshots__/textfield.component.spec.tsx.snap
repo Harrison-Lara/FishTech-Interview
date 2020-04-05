@@ -1,3 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`TextField Render a textfield 1`] = `ShallowWrapper {}`;
+exports[`TextField Render a textfield 1`] = `
+<WithStyles(ForwardRef(TextField))
+  id="test"
+  label="testing"
+  onChange={[MockFunction]}
+/>
+`;
