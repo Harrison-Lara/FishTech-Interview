@@ -32,6 +32,9 @@ node-deploy/node_modules
 node-deploy/src/.deploy.env
 node-deploy/src/.production.env
 
+# lambda function 
+lambda-function/node_modules
+
 # misc
 .DS_Store
 .env.local
