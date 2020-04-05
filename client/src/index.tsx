@@ -1,11 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import { IPAddress } from 'containers';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <IPAddress />
   </React.StrictMode>,
   document.getElementById('root')
 );
