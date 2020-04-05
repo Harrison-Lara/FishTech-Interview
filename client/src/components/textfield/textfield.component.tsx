@@ -1,7 +1,7 @@
 import React from 'react';
 import { TextField as MatTextField } from '@material-ui/core'
 
-interface TextfieldProps {
+interface ITextfieldProps {
     children?: React.ReactNode;
     disabled?: boolean;
     error?: boolean;
@@ -10,20 +10,22 @@ interface TextfieldProps {
     id: string;
     label: string;
     multiline?: boolean;
-    name: string;
     placeholder?: string;
     required?: boolean;
     rows?: string | number;
     rowsMax?: string | number;
+    onBlur?: any
     type?: string;
-    value: string;
+    value?: any;
+    onChange: any
+    className?: any;
 }
 
-const TextField = (props: TextfieldProps) => {
-    const { id, label, name, value, ...rest } = props;
+const TextField = (props: ITextfieldProps) => {
+    const { id, label, value, onChange, ...rest } = props;
 
     return (
-        <MatTextField id={id} label={label} name={name} value={value} {...rest} />
+        <MatTextField id={id} label={label} value={value} onChange={onChange} {...rest} />
     )
 }
 

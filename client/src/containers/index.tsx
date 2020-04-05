@@ -1,1 +1,1 @@
-export * from './ipAddress-container';
+export * from './IPAddress-container';
