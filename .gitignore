@@ -7,7 +7,7 @@ client/.env.production
 client/.env.local
 
 # testing
-/coverage
+client/coverage
 
 # production
 /build
