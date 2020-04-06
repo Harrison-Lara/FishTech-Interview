@@ -80,7 +80,7 @@ const IPAddress = () => {
       <Grid item xs={10} className={panelWidth}>
         <ExpansionPanel defaultExpanded>
           <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} id='detail-panel'>
-            <Typography variant='h6'>Retreived Information</Typography>
+            <Typography variant='h6'>Retrieved Information</Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
             <Typography variant='body1'>{IPData !== undefined ? JSON.stringify(IPData, null, 5).replace(/"([^"]+)":/g, "'$1:'") : 'Awaiting Input...'}</Typography>

@@ -61,7 +61,7 @@ exports[`IPAddress Render the IPAddress container 1`] = `
         <WithStyles(ForwardRef(Typography))
           variant="h6"
         >
-          Retreived Information
+          Retrieved Information
         </WithStyles(ForwardRef(Typography))>
       </WithStyles(ForwardRef(ExpansionPanelSummary))>
       <WithStyles(ForwardRef(ExpansionPanelDetails))>
