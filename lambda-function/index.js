@@ -1,14 +1,15 @@
-import { lookup } from 'whois';
+const whois = require('whois');
 
 let res;
-export async function handler(input) {
+
+exports.handler = async (info) => {
   try {
-    res = lookup(input, (data) => {
-      data;
+    res = whois.lookup(info.address, (data) => {
+      return data;
     });
   }
   catch (err) {
     return err
   }
   return res;
-}
+};
