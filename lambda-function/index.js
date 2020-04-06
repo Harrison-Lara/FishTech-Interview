@@ -1,15 +1,15 @@
 const whois = require('whois');
 
-let res;
+let reponse;
 
-exports.handler = async (info) => {
+exports.handler = async (value) => {
   try {
-    res = whois.lookup(info.address, (data) => {
+    reponse = whois.lookup(value.address, (data) => {
       return data;
     });
   }
-  catch (err) {
-    return err
+  catch (error) {
+    return error
   }
-  return res;
+  return reponse;
 };
