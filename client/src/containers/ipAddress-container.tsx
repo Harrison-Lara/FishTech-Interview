@@ -16,7 +16,6 @@ const useStyles = makeStyles((theme: Theme) =>
       margin: '2.5rem'
     },
     panelWidth: {
-      width: '95%',
       marginLeft: '8rem',
       marginRight: '8rem'
     }
