@@ -1,5 +1,5 @@
 # IP Address Information
-React, TS, Terraform, AWS
+React, TS, Terraform, API Gateway, S3, Lambda
 
 ## React App
 
