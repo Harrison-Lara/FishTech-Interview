@@ -1,6 +1,7 @@
 import React from 'react';
-import { Typography, Grid, FormGroup } from '@material-ui/core';
+import { Typography, Grid, FormGroup, ExpansionPanel, ExpansionPanelDetails, ExpansionPanelSummary } from '@material-ui/core';
 import { makeStyles, createStyles } from '@material-ui/styles';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { useFormik } from 'formik';
 import { TextField, Button } from 'components';
 import { getIPInfo } from 'apis';
@@ -13,6 +14,10 @@ const useStyles = makeStyles(() =>
     },
     buttonMargin: {
       margin: '2.5rem'
+    },
+    panelWidth: {
+      width: '95%',
+      marginLeft: '8rem'
     }
   })
 );
@@ -27,14 +32,14 @@ export const validate = (values: any) => {
 
 const IPAddress = () => {
   // styles
-  const { title, buttonMargin } = useStyles();
+  const { title, buttonMargin, panelWidth } = useStyles();
 
   // hooks
-  const [IPData, setIPData] = React.useState({});
+  const [IPData, setIPData] = React.useState();
 
   const getAddress = async (data: string) => {
     let res = await getIPInfo(data);
-    setIPData(res);
+    setIPData(res.data);
   }
 
   const formik = useFormik({
@@ -50,6 +55,7 @@ const IPAddress = () => {
 
   return (
     <React.Fragment>
+      {/* Form */}
       <form onSubmit={formik.handleSubmit}>
         <Grid container spacing={8}>
           <Grid item xs={4} />
@@ -67,11 +73,20 @@ const IPAddress = () => {
             </FormGroup>
           </Grid>
         </Grid>
-        {console.log(IPData)}
-      </form >
+      </form>
 
-    
-    </React.Fragment>
+      {/* Detail Panel */}
+      <Grid item xs={10} className={panelWidth}>
+        <ExpansionPanel defaultExpanded className={panelWidth}>
+          <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />} id='detail-panel'>
+            <Typography variant='h6'>Retreived Information</Typography>
+          </ExpansionPanelSummary>
+          <ExpansionPanelDetails>
+            <Typography variant='body1'>{IPData !== undefined ? JSON.stringify(IPData, null, 5).replace(/"([^"]+)":/g, "'$1:'") : 'Awaiting Input...'}</Typography>
+          </ExpansionPanelDetails>
+        </ExpansionPanel>
+      </Grid>
+    </React.Fragment >
   );
 }
 
