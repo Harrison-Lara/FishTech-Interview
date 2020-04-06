@@ -1,12 +1,12 @@
 import React from 'react';
-import { Typography, Grid, FormGroup, ExpansionPanel, ExpansionPanelDetails, ExpansionPanelSummary, Theme } from '@material-ui/core';
+import { Typography, Grid, FormGroup, ExpansionPanel, ExpansionPanelDetails, ExpansionPanelSummary } from '@material-ui/core';
 import { makeStyles, createStyles } from '@material-ui/styles';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { useFormik } from 'formik';
 import { TextField, Button } from 'components';
 import { getIPInfo } from 'apis';
 
-const useStyles = makeStyles((theme: Theme) =>
+const useStyles = makeStyles(() =>
   createStyles({
     title: {
       marginTop: '1rem',
