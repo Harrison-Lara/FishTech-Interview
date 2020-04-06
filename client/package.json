@@ -45,7 +45,8 @@
       "!<rootDir>/src/index.tsx",
       "!<rootDir>/src/react-app-env.d.ts",
       "!<rootDir>/src/components/index.tsx",
-      "!<rootDir>/src/containers/index.tsx"
+      "!<rootDir>/src/containers/index.tsx",
+      "!<rootDir>/src/apis/index.tsx"
     ]
   },
   "browserslist": {
