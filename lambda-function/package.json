@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "whois": "^2.12.1"
+    "whois": "^2.13.6"
   },
   "devDependencies": {},
   "author": "Harrison R. Lara",
